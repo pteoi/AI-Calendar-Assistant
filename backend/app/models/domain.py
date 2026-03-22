@@ -11,8 +11,17 @@ class EventDB(Base):
     name = Column(String, nullable=False, index=True)
     datetime = Column(DateTime, nullable=False, index=True)
     duration = Column(Integer, default=60)
-    # location (to be implemented)
+    location = Column(String, default="No location provided")
     description = Column(String, default="No description provided")
     repeats = Column(Boolean, default=False)
     repeat_interval = Column(Integer, default=0)
     repeats_until = Column(DateTime, default=None, nullable=True)
+
+class TaskDB(Base):
+    __tablename__ = "tasks"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    name = Column(String, nullable=False, index=True)
+    deadline = Column(DateTime, nullable=False, index=True)
+    description = Column(String, default="No description provided")

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ChatBox({ onEventAdded }) {
+export default function ChatBox({ onDataUpdated }) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,8 +33,8 @@ export default function ChatBox({ onEventAdded }) {
 
       setMessages((prev) => [...prev, { text: data.reply, sender: "ai" }]);
 
-      if (onEventAdded) {
-        onEventAdded();
+      if (onDataUpdated) {
+        onDataUpdated();
       }
 
     } catch (error) {
